@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplitBill">
+    tools:context=".SplitBillActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/split_bill_toolbar"

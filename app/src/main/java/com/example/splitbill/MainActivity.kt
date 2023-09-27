@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
 
         val btSplitBill = findViewById<Button>(R.id.bt_split_bill)
         btSplitBill.setOnClickListener{
-            val intent = Intent(this, SplitBill::class.java)
-            //intent.putExtra()
+            val intent = Intent(this, SplitBillActivity::class.java)
+            intent.putExtra("paymentAmount", 45000)
             startActivity(intent)
         }
     }
