@@ -14,7 +14,6 @@ import com.example.splitbill.databinding.ActivitySplitBillBinding
 class SplitBillActivity : AppCompatActivity(), AdapterListener {
 
     private lateinit var adapter: UserAdapter
-    private lateinit var userListRecyclerView: RecyclerView
     private var amount: Long = 0
     private lateinit var binding: ActivitySplitBillBinding
 
@@ -30,14 +29,14 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
         setAddButtonListener()
     }
 
-    fun setPaymentAmountTextView() {
+    private fun setPaymentAmountTextView() {
         val paymentAmountTextView : TextView = binding.tvValueAmount
         amount = intent.getIntExtra("paymentAmount", 0).toLong()
         paymentAmountTextView.text = amount.toString()
     }
 
-    fun setRecyclerView() {
-        userListRecyclerView = binding.rvUserListRecyclerView
+    private fun setRecyclerView() {
+        val userListRecyclerView = binding.rvUserListRecyclerView
         adapter = UserAdapter()
         adapter.addAdapterListener(this)
         adapter.addParticipant(User(1, "Current User", amount, true))
@@ -45,34 +44,27 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
         userListRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    fun setAddButtonListener(){
+    private fun setAddButtonListener(){
         val addButton = binding.tvPlusButton
         addButton.setOnClickListener {
             addParticipant()
         }
     }
 
-    fun addParticipant() {
+    private fun addParticipant() {
         adapter.addParticipant(User(adapter.itemCount + 1, "DDDDDDDDDD", 0, false))
         splitAmountEvenly()
     }
 
-    fun removeParticipant(user: User) {
+    private fun removeParticipant(user: User) {
         adapter.removeParticipant(user)
         splitAmountEvenly()
     }
 
-    fun splitAmountEvenly(){
+    private fun splitAmountEvenly(){
         val amountEachUser = amount / adapter.itemCount
         adapter.updateAmount(amountEachUser)
     }
-
-    data class User(
-        val id: Int,
-        val name: String,
-        var amount: Long,
-        val isCurrentUser: Boolean
-    )
 
     override fun onRemoveParticipant(user: User) {
         removeParticipant(user)
@@ -80,5 +72,5 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
 }
 
 interface AdapterListener{
-    fun onRemoveParticipant(user: SplitBillActivity.User)
+    fun onRemoveParticipant(user: User)
 }

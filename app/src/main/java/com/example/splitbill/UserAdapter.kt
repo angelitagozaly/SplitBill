@@ -13,7 +13,7 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     inner class UserViewHolder(val binding: UserListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private var mListener: AdapterListener? = null
-    private val userList = mutableListOf<SplitBillActivity.User>()
+    private val userList = mutableListOf<User>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = UserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -44,12 +44,12 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         this.mListener = listener
     }
 
-    fun addParticipant(user: SplitBillActivity.User) {
+    fun addParticipant(user: User) {
         userList.add(user)
         notifyDataSetChanged()
     }
 
-    fun removeParticipant(user: SplitBillActivity.User) {
+    fun removeParticipant(user: User) {
         userList.removeIf {
             it.id == user.id
         }
