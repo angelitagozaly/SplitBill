@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.splitbill.databinding.ActivitySplitBillBinding
 
+const val PAYAMT = "paymentAmount"
 class SplitBillActivity : AppCompatActivity(), AdapterListener {
 
     private lateinit var adapter: UserAdapter
@@ -31,7 +32,7 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
 
     private fun setPaymentAmountTextView() {
         val paymentAmountTextView : TextView = binding.tvValueAmount
-        amount = intent.getIntExtra("paymentAmount", 0).toLong()
+        amount = intent.getIntExtra(PAYAMT, 0).toLong()
         paymentAmountTextView.text = amount.toString()
     }
 
