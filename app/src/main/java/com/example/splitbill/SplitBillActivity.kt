@@ -63,7 +63,11 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
     }
 
     private fun splitAmountEvenly(){
-        val amountEachUser = amount / adapter.itemCount
+        var amountEachUser = amount / adapter.itemCount
+        val remainderEachUser = (amount % adapter.itemCount) % adapter.itemCount
+        if (remainderEachUser > 0.5){
+            amountEachUser++
+        }
         adapter.updateAmount(amountEachUser)
     }
 
