@@ -1,5 +1,6 @@
 package com.example.splitbill
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.splitbill.databinding.ActivitySplitBillBinding
+import com.example.splitbill.databinding.ContactListItemBinding
 
 const val PAYAMT = "paymentAmount"
 class SplitBillActivity : AppCompatActivity(), AdapterListener {
@@ -48,7 +50,9 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
     private fun setAddButtonListener(){
         val addButton = binding.tvPlusButton
         addButton.setOnClickListener {
-            addParticipant()
+            //addParticipant()
+            val intent = Intent(this, ContactListActivity::class.java)
+            startActivity(intent)
         }
     }
 
