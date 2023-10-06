@@ -28,6 +28,7 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
         setPaymentAmountTextView()
         setRecyclerView()
         setAddButtonListener()
+        setConfirmationButtonListener()
     }
 
     private fun setPaymentAmountTextView() {
@@ -73,6 +74,13 @@ class SplitBillActivity : AppCompatActivity(), AdapterListener {
 
     override fun onRemoveParticipant(user: User) {
         removeParticipant(user)
+    }
+
+    private fun setConfirmationButtonListener(){
+        val confirmButton = binding.btConfirm
+        confirmButton.setOnClickListener{
+            ConfirmationDialogFragment().show(supportFragmentManager, "CONFIRMATION_DIALOG")
+        }
     }
 }
 
