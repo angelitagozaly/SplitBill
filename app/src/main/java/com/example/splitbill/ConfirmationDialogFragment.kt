@@ -15,11 +15,19 @@ class ConfirmationDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
+            val names = arguments?.getString("names")
+            val amounts = arguments?.getString("amounts")
             binding = ConfirmationDialogBinding.inflate(layoutInflater)
             builder.setView(binding.root)
+            setTextView(names!!, amounts!!)
             setXButtonListener()
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun setTextView(names: String, amounts: String){
+        binding.tvParticipantNameList.text = names
+        binding.tvParticipantAmountList.text = amounts
     }
 
     private fun setXButtonListener(){

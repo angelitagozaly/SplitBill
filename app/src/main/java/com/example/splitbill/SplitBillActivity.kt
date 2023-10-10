@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.splitbill.databinding.ActivitySplitBillBinding
+import com.example.splitbill.databinding.ConfirmationDialogBinding
 import com.example.splitbill.databinding.ContactListItemBinding
 
 const val PAYAMT = "paymentAmount"
@@ -85,6 +86,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
             amountEachUser++
         }
         adapter.updateAmount(amountEachUser)
+        setConfirmationButtonListener()
     }
 
     override fun onRemoveParticipant(user: User) {
@@ -95,8 +97,29 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
     private fun setConfirmationButtonListener(){
         val confirmButton = binding.btConfirm
         confirmButton.setOnClickListener{
-            ConfirmationDialogFragment().show(supportFragmentManager, "CONFIRMATION_DIALOG")
+            showConfirmationDialog()
         }
+    }
+
+    private fun showConfirmationDialog(){
+        val userList = adapter.getUserList()
+        val bundle = Bundle()
+        val sb = StringBuilder()
+        val sb2 = StringBuilder()
+        for (user in userList) {
+            sb.append(user.name)
+            sb2.append(user.amount.toString())
+            sb.append('\n')
+            sb2.append('\n')
+        }
+        val resultName = sb.toString()
+        val resultAmount = sb2.toString()
+        bundle.putString("names", resultName)
+        bundle.putString("amounts", resultAmount)
+
+        val dialog = ConfirmationDialogFragment()
+        dialog.arguments = bundle
+        dialog.show(supportFragmentManager, "CONFIRMATION_DIALOG")
     }
 
     private fun addParticipant(id: String, name: String){
