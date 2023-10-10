@@ -41,6 +41,8 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun getItemCount() = userList.size
 
+    fun getUserList() = userList
+
     fun addAdapterListener(listener: UserAdapterListener) {
         this.mListener = listener
     }
