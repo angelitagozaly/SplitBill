@@ -15,6 +15,7 @@
             android:text="x"
             android:textSize="20dp"
             android:padding="5dp"
+            android:layout_marginRight="7dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="onXButtonClicked"/>
@@ -54,7 +55,6 @@
             android:layout_weight="0.5"
             android:layout_gravity="right"
             android:gravity="right"/>
-
     </LinearLayout>
 
     <LinearLayout
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Send Notification"
             android:textSize="15dp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp" />
     </LinearLayout>
 
 
