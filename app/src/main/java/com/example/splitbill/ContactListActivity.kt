@@ -1,5 +1,7 @@
 package com.example.splitbill
 
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -10,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.splitbill.databinding.ActivityContactListBinding
 
 
-class ContactListActivity : AppCompatActivity(){
+class ContactListActivity : AppCompatActivity(), ContactAdapterListener{
 
     private lateinit var adapter: ContactAdapter
     private lateinit var binding: ActivityContactListBinding
@@ -29,6 +31,7 @@ class ContactListActivity : AppCompatActivity(){
     private fun setUpRecyclerView() {
         val userListRecyclerView = binding.rvContactListRecyclerView
         adapter = ContactAdapter()
+        adapter.addAdapterListener(this)
         userListRecyclerView.adapter = adapter
         userListRecyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -73,4 +76,15 @@ class ContactListActivity : AppCompatActivity(){
 
         return contactList
     }
+
+    override fun onContactSelected(contact: Contact) {
+        val resultIntent = Intent()
+        resultIntent.putExtra("SELECTED_CONTACT", contact)
+        setResult(Activity.RESULT_OK, resultIntent)
+        finish()
+    }
+}
+
+interface ContactAdapterListener{
+    fun onContactSelected(contact: Contact)
 }

@@ -11,6 +11,7 @@ import com.example.splitbill.databinding.UserListItemBinding
 class ContactAdapter() : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
     private lateinit var binding: ContactListItemBinding
+    private var mListener: ContactAdapterListener? = null
     private var contactList = mutableListOf<Contact>()
 
     inner class ContactViewHolder(val binding: ContactListItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -25,6 +26,9 @@ class ContactAdapter() : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>(
 
         holder.binding.tvContactName.text = currentItem.name
         holder.binding.tvContactNumber.text = currentItem.number
+        holder.binding.llContactList.setOnClickListener {
+            mListener?.onContactSelected(currentItem)
+        }
     }
 
     fun setContactList(contacts: List<Contact>){
@@ -33,4 +37,8 @@ class ContactAdapter() : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>(
     }
 
     override fun getItemCount() = contactList.size
+
+    fun addAdapterListener(listener: ContactAdapterListener) {
+        this.mListener = listener
+    }
 }

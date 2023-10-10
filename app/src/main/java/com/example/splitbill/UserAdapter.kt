@@ -10,10 +10,11 @@ import com.example.splitbill.databinding.UserListItemBinding
 class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private lateinit var binding: UserListItemBinding
+    private var mListener: UserAdapterListener? = null
+    private val userList = mutableListOf<User>()
+
     inner class UserViewHolder(val binding: UserListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private var mListener: AdapterListener? = null
-    private val userList = mutableListOf<User>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = UserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -40,7 +41,7 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun getItemCount() = userList.size
 
-    fun addAdapterListener(listener: AdapterListener) {
+    fun addAdapterListener(listener: UserAdapterListener) {
         this.mListener = listener
     }
 
