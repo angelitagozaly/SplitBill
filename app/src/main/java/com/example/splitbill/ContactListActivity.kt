@@ -79,7 +79,7 @@ class ContactListActivity : AppCompatActivity(), ContactAdapterListener{
 
     override fun onContactSelected(contact: Contact) {
         val resultIntent = Intent()
-        resultIntent.putExtra("SELECTED_CONTACT", contact)
+        resultIntent.putExtra(SELECTCONT, contact)
         setResult(Activity.RESULT_OK, resultIntent)
         finish()
     }

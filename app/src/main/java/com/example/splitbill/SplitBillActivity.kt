@@ -21,6 +21,7 @@ import com.example.splitbill.databinding.ActivitySplitBillBinding
 import com.example.splitbill.databinding.ContactListItemBinding
 
 const val PAYAMT = "paymentAmount"
+const val SELECTCONT = "SELECTED_CONTACT"
 
 class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
 
@@ -31,7 +32,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
     private val contactSelectionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data: Intent? = result.data
-            val selectedContact: Contact? = data?.getParcelableExtra("SELECTED_CONTACT")
+            val selectedContact: Contact? = data?.getParcelableExtra(SELECTCONT)
 
             if (selectedContact != null) {
                 addParticipant(selectedContact.id.toString(), selectedContact.name)
@@ -77,14 +78,13 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
 
     private fun splitAmountEvenly(){
         var numOfParticipant = adapter.itemCount
-        if (numOfParticipant != 0){
-            var amountEachUser = amount / numOfParticipant
-            val remainderEachUser = (amount % numOfParticipant) % numOfParticipant
-            if (remainderEachUser > 0.5){
-                amountEachUser++
-            }
-            adapter.updateAmount(amountEachUser)
+        if (numOfParticipant == 0) return
+        var amountEachUser = amount / numOfParticipant
+        val remainderEachUser = (amount % numOfParticipant) % numOfParticipant
+        if (remainderEachUser > 0.5){
+            amountEachUser++
         }
+        adapter.updateAmount(amountEachUser)
     }
 
     override fun onRemoveParticipant(user: User) {
