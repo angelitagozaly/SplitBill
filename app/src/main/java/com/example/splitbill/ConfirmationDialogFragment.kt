@@ -12,6 +12,8 @@ import com.example.splitbill.databinding.ConfirmationDialogBinding
 class ConfirmationDialogFragment : DialogFragment() {
 
     private lateinit var binding: ConfirmationDialogBinding
+    private var dListener: DialogListener? = null
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
@@ -21,6 +23,7 @@ class ConfirmationDialogFragment : DialogFragment() {
             builder.setView(binding.root)
             setTextView(names!!, amounts!!)
             setXButtonListener()
+            setConfirmButtonListener()
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
@@ -35,5 +38,21 @@ class ConfirmationDialogFragment : DialogFragment() {
         xButton.setOnClickListener {
             dialog?.cancel()
         }
+    }
+
+    private fun setConfirmButtonListener(){
+        val confirmButton = binding.btSendNotification
+        confirmButton.setOnClickListener {
+            dialog?.dismiss()
+            informDialogListener()
+        }
+    }
+
+    fun addDialogListener(listener: DialogListener){
+        this.dListener = listener
+    }
+
+    private fun informDialogListener(){
+        dListener?.showNotificationConfirmationDialog()
     }
 }

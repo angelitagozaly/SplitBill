@@ -1,6 +1,7 @@
 package com.example.splitbill
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -24,11 +25,12 @@ import com.example.splitbill.databinding.ContactListItemBinding
 const val PAYAMT = "paymentAmount"
 const val SELECTCONT = "SELECTED_CONTACT"
 
-class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
+class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListener {
 
     private lateinit var adapter: UserAdapter
     private var amount: Long = 0
     private lateinit var binding: ActivitySplitBillBinding
+    private lateinit var dialog: ConfirmationDialogFragment
 
     private val contactSelectionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -52,6 +54,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
         setRecyclerView()
         setAddButtonListener()
         setConfirmationButtonListener()
+        setDialogListener()
     }
 
     private fun setPaymentAmountTextView() {
@@ -89,6 +92,11 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
         setConfirmationButtonListener()
     }
 
+    private fun addParticipant(id: String, name: String){
+        adapter.addParticipant(User(id.toInt(), name, amount, false))
+        splitAmountEvenly()
+    }
+
     override fun onRemoveParticipant(user: User) {
         adapter.removeParticipant(user)
         splitAmountEvenly()
@@ -117,17 +125,32 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener {
         bundle.putString("names", resultName)
         bundle.putString("amounts", resultAmount)
 
-        val dialog = ConfirmationDialogFragment()
         dialog.arguments = bundle
         dialog.show(supportFragmentManager, "CONFIRMATION_DIALOG")
     }
 
-    private fun addParticipant(id: String, name: String){
-        adapter.addParticipant(User(id.toInt(), name, amount, false))
-        splitAmountEvenly()
+    override fun showNotificationConfirmationDialog(){
+        val dialog = AlertDialog.Builder(this)
+        dialog.setMessage("Notification has been sent!")
+            .setPositiveButton("Ok") { dialog, id ->
+                dialog.dismiss()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        dialog.create()
+        dialog.show()
+    }
+
+    private fun setDialogListener(){
+        dialog = ConfirmationDialogFragment()
+        dialog.addDialogListener(this)
     }
 }
 
 interface UserAdapterListener{
     fun onRemoveParticipant(user: User)
+}
+
+interface DialogListener{
+    fun showNotificationConfirmationDialog()
 }
