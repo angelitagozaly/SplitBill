@@ -6,4 +6,21 @@
     </style>
 
     <style name="Theme.SplitBill" parent="Base.Theme.SplitBill" />
+
+    <style name="RTheme.TextView" parent="android:Theme.Material.Light" >
+        <item name="android:textSize">@dimen/text_font_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="RTheme.TextView.Title" parent="RTheme.TextView" >
+        <item name="android:textSize">@dimen/title_font_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RTheme.TextView.Caption" parent="RTheme.TextView" >
+        <item name="android:textSize">@dimen/title_font_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
 </resources>

@@ -1,26 +1,46 @@
 package com.example.splitbill
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.example.splitbill.databinding.ActivityMainBinding
-import com.example.splitbill.databinding.ActivitySplitBillBinding
+import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : ComponentActivity() {
+
+    private lateinit var mAdapter: PaymentTransitionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_transition_history)
+        setupViews()
+    }
 
-        val btSplitBill = binding.btSplitBill
-        btSplitBill.setOnClickListener{
-            val intent = Intent(this, SplitBillActivity::class.java)
-            intent.putExtra("paymentAmount", 45000)
-            startActivity(intent)
+    private fun setupViews() {
+        // setup recyclerview
+        mAdapter = PaymentTransitionAdapter(transitions)
+        mAdapter.setAdapterListener { id ->
+            openTransitionDetail(id)
+        }
+
+        findViewById<RecyclerView>(R.id.rv_transitions).apply {
+            addItemDecoration(
+                DividerItemDecoration(
+                    this.context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+            layoutManager = LinearLayoutManager(this.context)
+            adapter = mAdapter
         }
     }
+
+    private fun openTransitionDetail(id: Int) {
+        val intent = Intent(this, PaymentTransitionDetailActivity::class.java)
+        intent.putExtra(KEY_PAYMENT_TRANSITION_ID, id)
+        startActivity(intent)
+    }
+
 }

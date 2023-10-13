@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_gap">8dp</dimen>
+    <dimen name="gap">16dp</dimen>
+    <dimen name="big_gap">24dp</dimen>
+    <dimen name="huge_gap">64dp</dimen>
+
+    <dimen name="text_font_size">16sp</dimen>
+    <dimen name="title_font_size">16sp</dimen>
+    <dimen name="caption_font_size">10sp</dimen>
+    <dimen name="small_font_size">12sp</dimen>
+
+    <dimen name="merchant_icon_size">64dp</dimen>
+</resources>
