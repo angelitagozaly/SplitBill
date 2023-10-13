@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SplitBill</string>
+    <string name="lbl_merchant_icon">Merchant Icon</string>
+    <string name="lbl_date_time">Date Time</string>
+    <string name="lbl_slip_number">Slip Number</string>
+    <string name="lbl_total_payment_amount">Total Payment Amount</string>
+    <string name="lbl_rakuten_cash">Rakuten Cash</string>
+    <string name="lbl_points_earned">Points Earned</string>
 </resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/big_gap"
+    android:paddingBottom="@dimen/big_gap"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_merchant_icon"
+        android:layout_width="@dimen/merchant_icon_size"
+        android:layout_height="@dimen/merchant_icon_size"
+        android:layout_marginStart="@dimen/small_gap"
+        android:layout_marginEnd="@dimen/small_gap"
+        tools:src="@drawable/ic_launcher_foreground"
+        android:layout_alignTop="@id/container_description"
+        android:layout_alignBottom="@id/container_description"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:id="@+id/container_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/iv_merchant_icon"
+        android:layout_toStartOf="@id/tv_amount"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_created_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="2023/10/03(Tue)"/>
+
+        <TextView
+            android:id="@+id/tv_merchant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            style="@style/RTheme.TextView.Caption"
+            tools:text="Rakuten Cafe"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_amount"
+        style="@style/RTheme.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/container_description"
+        android:layout_alignBottom="@id/container_description"
+        android:layout_toStartOf="@id/iv_arrow_right"
+        android:layout_marginStart="@dimen/small_gap"
+        android:layout_marginTop="@dimen/small_gap"
+        android:layout_marginEnd="@dimen/small_gap"
+        android:layout_marginBottom="@dimen/small_gap"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+        tools:text="$ 234,34" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_right"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_right_arrow"
+        android:layout_alignTop="@id/container_description"
+        android:layout_alignBottom="@id/container_description"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

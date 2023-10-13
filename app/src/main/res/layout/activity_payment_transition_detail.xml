@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/gap"
+    tools:context=".PaymentTransitionDetailActivity">
+
+    <ImageView
+        android:id="@+id/iv_merchant_icon"
+        android:layout_width="@dimen/merchant_icon_size"
+        android:layout_height="@dimen/merchant_icon_size"
+        android:layout_marginStart="@dimen/small_gap"
+        android:layout_marginEnd="@dimen/small_gap"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/lbl_merchant_icon"
+        tools:src="@drawable/ic_rakuten" />
+
+    <TextView
+        android:id="@+id/tv_merchant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:layout_toEndOf="@id/iv_merchant_icon"
+        android:textSize="24sp"
+        android:layout_margin="@dimen/small_gap"
+        style="@style/RTheme.TextView"
+        tools:text="Rakuten Cafe"/>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/iv_merchant_icon" />
+
+    <TextView
+        android:id="@+id/tv_date_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/divider1"
+        android:text="@string/lbl_date_time"
+        style="@style/RTheme.TextView.Title"
+        tools:text="Date Time"/>
+
+    <TextView
+        android:id="@+id/tv_date_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_marginEnd="@dimen/gap"
+        android:layout_below="@id/divider1"
+        android:layout_alignParentEnd="true"
+        style="@style/RTheme.TextView"
+        tools:text="2023/10/01(Sun) 20:03"/>
+
+    <TextView
+        android:id="@+id/tv_slip_number_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/tv_date_time_label"
+        android:text="@string/lbl_slip_number"
+        style="@style/RTheme.TextView.Title"
+        tools:text="Slip Number"/>
+
+    <TextView
+        android:id="@+id/tv_slip_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gap"
+        android:layout_alignTop="@id/tv_slip_number_label"
+        android:layout_alignParentEnd="true"
+        android:textAllCaps="true"
+        android:textSize="@dimen/small_font_size"
+        style="@style/RTheme.TextView"
+        tools:text="ea6e364d-68ab-4bbe-beeb-99984c76b856"/>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/tv_slip_number" />
+
+    <TextView
+        android:id="@+id/tv_total_amount_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/divider2"
+        android:text="@string/lbl_total_payment_amount"
+        style="@style/RTheme.TextView.Title"
+        tools:text="Total Payment Amount"/>
+
+    <TextView
+        android:id="@+id/tv_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_marginEnd="@dimen/gap"
+        android:layout_below="@id/divider2"
+        android:layout_alignParentEnd="true"
+        style="@style/RTheme.TextView"
+        tools:text="$ 3453"/>
+
+    <TextView
+        android:id="@+id/tv_payment_method_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/tv_total_amount_label"
+        android:textStyle="normal"
+        android:text="@string/lbl_rakuten_cash"
+        style="@style/RTheme.TextView.Title"
+        tools:text="Rakuten Cash"/>
+
+    <TextView
+        android:id="@+id/tv_payment_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gap"
+        android:layout_alignTop="@id/tv_payment_method_label"
+        android:layout_alignParentEnd="true"
+        android:textAllCaps="true"
+        style="@style/RTheme.TextView"
+        tools:text="$ 3453"/>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/tv_payment_method_label" />
+
+    <TextView
+        android:id="@+id/tv_point_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_below="@id/divider3"
+        android:text="@string/lbl_points_earned"
+        style="@style/RTheme.TextView.Title"
+        tools:text="Points Earned"/>
+
+    <TextView
+        android:id="@+id/tv_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap"
+        android:layout_marginEnd="@dimen/gap"
+        android:layout_below="@id/divider3"
+        android:layout_alignParentEnd="true"
+        style="@style/RTheme.TextView"
+        tools:text="34"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:layout_marginTop="-16dp">
+
+        <Button
+            android:id="@+id/bt_split_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Split Bill"
+            android:paddingHorizontal="30dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
