@@ -26,15 +26,17 @@ class PaymentTransitionDetailActivity : ComponentActivity() {
         if (result != null) mItem = result else finish() // Cannot find Transition, throw error
 
         showItem(mItem)
-        setSplitBillButtonListener()
+        setSplitBillButtonListener(mItem)
 
     }
 
-    private fun setSplitBillButtonListener() {
+    private fun setSplitBillButtonListener(item: PaymentTransition) {
         val btSplitBill = viewBinding.btSplitBill
         btSplitBill.setOnClickListener{
             val intent = Intent(this, SplitBillActivity::class.java)
-            intent.putExtra("paymentAmount", 45000)
+            intent.putExtra(PAYAMT, item.amount)
+            intent.putExtra(PAYDESC, item.merchant.name)
+            intent.putExtra(PAYDATE, item.createdAt.toTimeFormat1())
             startActivity(intent)
         }
     }
