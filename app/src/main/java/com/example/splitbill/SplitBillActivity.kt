@@ -3,26 +3,17 @@ package com.example.splitbill
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.splitbill.databinding.ActivitySplitBillBinding
-import com.example.splitbill.databinding.ConfirmationDialogBinding
-import com.example.splitbill.databinding.ContactListItemBinding
 
 const val PAYAMT = "paymentAmount"
+const val PAYDESC = "paymentDescription"
+const val PAYDATE = "paymentDate"
 const val SELECTCONT = "SELECTED_CONTACT"
 
 class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListener {
@@ -51,6 +42,8 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         supportActionBar?.title ="Back"
 
         setPaymentAmountTextView()
+        setPaymentDescriptionTextView()
+        setPaymentDateTextView()
         setRecyclerView()
         setAddButtonListener()
         setConfirmationButtonListener()
@@ -59,8 +52,18 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
 
     private fun setPaymentAmountTextView() {
         val paymentAmountTextView : TextView = binding.tvValueAmount
-        amount = intent.getIntExtra(PAYAMT, 0).toLong()
-        paymentAmountTextView.text = amount.toString()
+        amount = intent.getLongExtra(PAYAMT, 0)
+        paymentAmountTextView.text = amount.toAmountFormat()
+    }
+
+    private fun setPaymentDescriptionTextView(){
+        val paymentDescriptionTextView : TextView = binding.tvPaymentDescription
+        paymentDescriptionTextView.text = intent.getStringExtra(PAYDESC)
+    }
+
+    private fun setPaymentDateTextView(){
+        val paymentDateTextView : TextView = binding.tvPaymentDate
+        paymentDateTextView.text = intent.getStringExtra(PAYDATE)
     }
 
     private fun setRecyclerView() {
@@ -81,7 +84,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
     }
 
     private fun splitAmountEvenly(){
-        var numOfParticipant = adapter.itemCount
+        val numOfParticipant = adapter.itemCount
         if (numOfParticipant == 0) return
         var amountEachUser = amount / numOfParticipant
         val remainderEachUser = (amount % numOfParticipant) % numOfParticipant
