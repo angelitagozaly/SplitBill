@@ -1,11 +1,27 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.SplitBill" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.SplitBill" parent="Base.Theme.SplitBill" />
+    <style name="Theme.SplitBill" parent="Base.Theme.SplitBill">
+        <item name="colorPrimary">@color/crimson</item>
+        <item name="colorPrimaryDark">@color/dark_crimson</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+    <style name="RTheme.Button" parent="android:Theme.Material.Light" >
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/crimson</item>
+    </style>
+
+    <style name="RTheme.Button.White" parent="android:Theme.Material.Light" >
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/crimson</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
 
     <style name="RTheme.TextView" parent="android:Theme.Material.Light" >
         <item name="android:textSize">@dimen/text_font_size</item>
@@ -21,6 +37,24 @@
     <style name="RTheme.TextView.Caption" parent="RTheme.TextView" >
         <item name="android:textSize">@dimen/title_font_size</item>
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="RTheme.TextView.Main.Title" parent="RTheme.TextView" >
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="RTheme.TextView.Text" parent="RTheme.TextView" >
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="RTheme.TextView.SubText" parent="RTheme.TextView" >
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
     
 </resources>
