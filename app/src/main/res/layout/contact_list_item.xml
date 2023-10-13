@@ -13,13 +13,14 @@
         android:id="@+id/tv_contact_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Other User"
-        android:textSize="20dp" />
+        android:text="@string/default_contact_name"
+        android:textSize="20sp"
+        android:theme="@style/RTheme.TextView.Text"/>
     <TextView
         android:id="@+id/tv_contact_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="123456789"
-        android:textSize="15dp" />
+        android:text="@string/default_contact_number"
+        android:textSize="15sp" />
 
 </LinearLayout>

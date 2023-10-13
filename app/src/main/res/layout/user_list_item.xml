@@ -14,32 +14,34 @@
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User"
-            android:textSize="15dp"
-            android:layout_marginBottom="10dp"/>
+            android:text="@string/default_contact_name"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
+            android:theme="@style/RTheme.TextView.SubText"/>
         <TextView
             android:id="@+id/tv_remove_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="X"
-            android:textSize="15dp"
+            android:text="@string/button_cross"
+            android:textSize="15sp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onXButtonClicked"
             android:layout_alignParentEnd="true"
             android:gravity="end"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:theme="@style/RTheme.TextView.SubText"
+            app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_user_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="4500"
-        android:textSize="15dp"
+        android:text="@string/default_amount"
+        android:textSize="15sp"
         android:textAlignment="textEnd"
         android:padding="5dp"
         android:layout_marginBottom="10dp"
-        android:background="#D9D9D9"/>
+        android:background="@color/light_gray"
+        android:theme="@style/RTheme.TextView.SubText"/>
 
     </LinearLayout>
