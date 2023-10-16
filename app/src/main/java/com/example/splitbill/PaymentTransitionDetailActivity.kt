@@ -3,6 +3,7 @@ package com.example.splitbill
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.splitbill.databinding.ActivityPaymentTransitionDetailBinding
 
 const val KEY_PAYMENT_TRANSITION_ID = "PAYMENT_TRANSITION_ID"
