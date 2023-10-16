@@ -22,5 +22,5 @@
     <string name="default_contact_number">123456789</string>
     <string name="button_plus">+</string>
     <string name="button_cross">x</string>
-    <string name="payment_confirmation_description">Send payment request to other participants.</string>
+    <string name="payment_confirmation_description">The above listed participants will receive a message once you click this button.</string>
 </resources>

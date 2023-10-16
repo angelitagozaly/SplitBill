@@ -9,7 +9,7 @@ val merchants = listOf(
     Merchant(
         id = 2,
         name = "セブンイレブン",
-        imageResId = R.drawable.ic_7eleven
+        imageResId = R.drawable.ic_super
     ),
     Merchant(
         id = 3,
