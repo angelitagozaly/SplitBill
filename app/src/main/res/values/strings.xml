@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">SplitBill</string>
     <string name="lbl_merchant_icon">Merchant Icon</string>
-    <string name="lbl_date_time">Date Time</string>
-    <string name="lbl_slip_number">Slip Number</string>
-    <string name="lbl_total_payment_amount">Total Payment Amount</string>
-    <string name="lbl_rakuten_cash">Rakuten Cash</string>
-    <string name="lbl_points_earned">Points Earned</string>
+    <string name="lbl_date_time">利用日時</string>
+    <string name="lbl_slip_number">伝票番号</string>
+    <string name="lbl_total_payment_amount">決済総額</string>
+    <string name="lbl_rakuten_cash">楽天キャッシュ</string>
+    <string name="lbl_points_earned">獲得ポイント</string>
     <string name="split_bill">Split Bill</string>
     <string name="title_merchant">Merchant:</string>
     <string name="default_merchant_name">Rakuten Cafe</string>
@@ -15,11 +15,12 @@
     <string name="default_amount">4500</string>
     <string name="title_participants">Participants:</string>
     <string name="button_confirm">CONFIRM</string>
-    <string name="title_rakuten_history">Rakuten History</string>
+    <string name="title_rakuten_history">楽天ペイご利用履歴</string>
     <string name="dialog_title_confirm_amount">Confirm Amount</string>
     <string name="button_send_notification">Send Notification</string>
     <string name="default_contact_name">Other User</string>
     <string name="default_contact_number">123456789</string>
     <string name="button_plus">+</string>
     <string name="button_cross">x</string>
+    <string name="payment_confirmation_description">Send payment request to other participants.</string>
 </resources>
