@@ -22,4 +22,8 @@
     <string name="default_contact_number">123456789</string>
     <string name="button_plus">+</string>
     <string name="button_cross">x</string>
+    <string name="payment_confirmation_description">The above listed participants will receive a message once you click this button.</string>
+    <string name="split_bill_history_title">Split Bill History</string>
+    <string name="split_history_paid_description">Paid</string>
+    <string name="default_paid_count">0/3</string>
 </resources>

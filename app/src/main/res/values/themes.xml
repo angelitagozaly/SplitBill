@@ -43,6 +43,7 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
     <style name="RTheme.TextView.Text" parent="RTheme.TextView" >

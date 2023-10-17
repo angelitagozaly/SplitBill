@@ -137,7 +137,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         dialog.setMessage("Notification has been sent!")
             .setPositiveButton("Ok") { dialog, id ->
                 dialog.dismiss()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, SplitBillHistoryActivity::class.java)
                 startActivity(intent)
             }
         dialog.create()

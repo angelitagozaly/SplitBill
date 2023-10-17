@@ -1,23 +1,20 @@
 package com.example.splitbill
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.splitbill.databinding.ContactListItemBinding
-import com.example.splitbill.databinding.UserListItemBinding
+import com.example.splitbill.databinding.ItemContactListBinding
 
 class ContactAdapter() : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    private lateinit var binding: ContactListItemBinding
+    private lateinit var binding: ItemContactListBinding
     private var mListener: ContactAdapterListener? = null
     private var contactList = mutableListOf<Contact>()
 
-    inner class ContactViewHolder(val binding: ContactListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ContactViewHolder(val binding: ItemContactListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val binding = ContactListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemContactListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ContactViewHolder(binding)
     }
 
