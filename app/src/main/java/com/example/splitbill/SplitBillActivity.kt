@@ -118,10 +118,12 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         val sb = StringBuilder()
         val sb2 = StringBuilder()
         for (user in userList) {
-            sb.append(user.name)
-            sb2.append(user.amount.toString())
-            sb.append('\n')
-            sb2.append('\n')
+            if (user.id != 0) {
+                sb.append(user.name)
+                sb2.append(user.amount.toString())
+                sb.append('\n')
+                sb2.append('\n')
+            }
         }
         val resultName = sb.toString()
         val resultAmount = sb2.toString()

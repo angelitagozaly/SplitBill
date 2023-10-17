@@ -63,15 +63,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_confirmation_description"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp" />
         <Button
             android:id="@+id/bt_send_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_send_notification"
             android:textSize="15sp"
-            android:layout_margin="10dp"
+            android:layout_marginHorizontal="10dp"
             android:theme="@style/RTheme.Button"/>
     </LinearLayout>
 

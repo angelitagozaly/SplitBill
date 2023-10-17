@@ -3,22 +3,22 @@ package com.example.splitbill
 val merchants = listOf(
     Merchant(
         id = 1,
-        name = "Rakuten Cafe",
+        name = "楽天カフェ　品川オフィス",
         imageResId = R.drawable.ic_rakuten
     ),
     Merchant(
         id = 2,
-        name = "7 Eleven",
-        imageResId = R.drawable.ic_7eleven
+        name = "セブンイレブン",
+        imageResId = R.drawable.ic_super
     ),
     Merchant(
         id = 3,
-        name = "Super",
+        name = "スーパー",
         imageResId = R.drawable.ic_super
     ),
     Merchant(
         id = 4,
-        name = "MITSUI Outlet Park",
+        name = "三井アウトレットパーク",
         imageResId = R.drawable.ic_super
     )
 )
