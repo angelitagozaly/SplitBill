@@ -1,5 +1,7 @@
 package com.example.splitbill
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -39,6 +41,12 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
     }
 
     override fun onSplitBillHistorySelected(splitBillHistory: SplitBillHistory) {
-        //write function
+        val dialog = AlertDialog.Builder(this)
+        dialog.setMessage("List of Participants")
+            .setPositiveButton("Ok") { dialog, id ->
+                dialog.cancel()
+            }
+        dialog.create()
+        dialog.show()
     }
 }
