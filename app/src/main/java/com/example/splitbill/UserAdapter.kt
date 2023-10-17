@@ -3,21 +3,20 @@ package com.example.splitbill
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.splitbill.databinding.UserListItemBinding
+import com.example.splitbill.databinding.ItemUserListBinding
 
 class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private lateinit var binding: UserListItemBinding
+    private lateinit var binding: ItemUserListBinding
     private var mListener: UserAdapterListener? = null
     private val userList = mutableListOf<User>()
 
-    inner class UserViewHolder(val binding: UserListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class UserViewHolder(val binding: ItemUserListBinding) : RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val binding = UserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemUserListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UserViewHolder(binding)
     }
 

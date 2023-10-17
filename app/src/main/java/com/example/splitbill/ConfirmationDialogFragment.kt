@@ -2,16 +2,13 @@ package com.example.splitbill
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import com.example.splitbill.databinding.ActivitySplitBillBinding
-import com.example.splitbill.databinding.ConfirmationDialogBinding
+import com.example.splitbill.databinding.DialogConfirmationBinding
 
 class ConfirmationDialogFragment : DialogFragment() {
 
-    private lateinit var binding: ConfirmationDialogBinding
+    private lateinit var binding: DialogConfirmationBinding
     private var dListener: DialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -19,7 +16,7 @@ class ConfirmationDialogFragment : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             val names = arguments?.getString("names")
             val amounts = arguments?.getString("amounts")
-            binding = ConfirmationDialogBinding.inflate(layoutInflater)
+            binding = DialogConfirmationBinding.inflate(layoutInflater)
             builder.setView(binding.root)
             setTextView(names!!, amounts!!)
             setXButtonListener()
