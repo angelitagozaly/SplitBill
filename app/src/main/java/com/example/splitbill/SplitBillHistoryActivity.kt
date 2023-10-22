@@ -47,7 +47,6 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
         val amount = intent.getLongExtra(PAYAMT, 0)
         val participantList: ArrayList<SplitParticipant> = intent.getParcelableArrayListExtra(PARTICIPANTS)!!
         SplitBillHistoryRepository.addSplitBillHistory(SplitBillHistory(SplitBillHistoryRepository.getSize()+1, date!!, merchant!!, amount, participantList, 0))
-        //SplitBillHistoryRepository.updatePaidCount(SplitBillHistoryRepository.getSize() - 1)
     }
 
     override fun onSplitBillHistorySelected(splitBillHistory: SplitBillHistory) {
