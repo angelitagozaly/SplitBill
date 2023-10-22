@@ -1,6 +1,6 @@
 package com.example.splitbill
 
-val histories = listOf(
+/*val histories = mutableListOf(
     SplitBillHistory(
         id = 1,
         date = "10/12/2023",
@@ -22,4 +22,4 @@ val histories = listOf(
         amount = 200,
         paidCount = 0
     )
-)
+)*/

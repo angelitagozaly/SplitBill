@@ -1,6 +1,7 @@
 package com.example.splitbill
 
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,6 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
 
     private lateinit var mAdapter: SplitBillHistoryAdapter
     private lateinit var binding: ActivitySplitBillHistoryBinding
-    private val repository = SplitBillHistoryRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +21,13 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
         setSupportActionBar(binding.tbHistoryListToolbar)
         supportActionBar?.title ="Back"
 
+        addToHistory()
         setupViews()
     }
 
     private fun setupViews() {
         // setup recyclerview
-        mAdapter = SplitBillHistoryAdapter(repository.getSplitBillHistory())
+        mAdapter = SplitBillHistoryAdapter(SplitBillHistoryRepository.getSplitBillHistory())
         mAdapter.setAdapterListener(this)
         binding.rvHistoryListRecyclerView.apply {
             addItemDecoration(
@@ -40,12 +41,28 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
         }
     }
 
+    private fun addToHistory(){
+        val date = intent.getStringExtra(PAYDATE)
+        val merchant = intent.getStringExtra(PAYDESC)
+        val amount = intent.getLongExtra(PAYAMT, 0)
+        val participantList: ArrayList<SplitParticipant> = intent.getParcelableArrayListExtra(PARTICIPANTS)!!
+        SplitBillHistoryRepository.addSplitBillHistory(SplitBillHistory(SplitBillHistoryRepository.getSize()+1, date!!, merchant!!, amount, participantList, 0))
+        //SplitBillHistoryRepository.updatePaidCount(SplitBillHistoryRepository.getSize() - 1)
+    }
+
     override fun onSplitBillHistorySelected(splitBillHistory: SplitBillHistory) {
+        val participantNames = splitBillHistory.participantList.map { it.name }.toTypedArray()
+        val checkedItems = splitBillHistory.participantList.map { it.paidStatus }.toBooleanArray()
         val dialog = AlertDialog.Builder(this)
-        dialog.setMessage("List of Participants")
-            .setPositiveButton("Ok") { dialog, id ->
-                dialog.cancel()
-            }
+        dialog.setTitle("List of Participants")
+        dialog.setMultiChoiceItems(participantNames, checkedItems) { _, position, isChecked ->
+            SplitBillHistoryRepository.updatePaidStatus(splitBillHistory.id - 1, position, isChecked)
+        }
+        dialog.setPositiveButton("Update Status") { dialog, id ->
+            dialog.cancel()
+            SplitBillHistoryRepository.updatePaidCount(splitBillHistory.id - 1)
+            mAdapter.notifyDataSetChanged()
+        }
         dialog.create()
         dialog.show()
     }
