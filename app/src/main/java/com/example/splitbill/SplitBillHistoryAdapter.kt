@@ -26,8 +26,9 @@ class SplitBillHistoryAdapter(histories: List<SplitBillHistory>) : RecyclerView.
         val currentItem = mHistories[position]
         holder.binding.tvSplitHistoryMerchant.text = currentItem.merchantName
         holder.binding.tvSplitHistoryDate.text = currentItem.date
-        holder.binding.tvSplitHistoryAmount.text = currentItem.amount.toString()
+        holder.binding.tvSplitHistoryAmount.text = currentItem.amount.toAmountFormat()
         holder.binding.tvSplitHistoryPaidCount.text = currentItem.paidCount.toString()
+        holder.binding.tvSplitHistoryPaidCountMax.text = currentItem.participantList.size.toString()
         holder.itemView.setOnClickListener {
             this.mListener?.onSplitBillHistorySelected(currentItem)
         }

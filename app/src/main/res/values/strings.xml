@@ -15,7 +15,7 @@
     <string name="default_amount">4500</string>
     <string name="title_participants">Participants:</string>
     <string name="button_confirm">CONFIRM</string>
-    <string name="title_rakuten_history">楽天ペイご利用履歴</string>
+    <string name="title_rakuten_history">楽天ペイご利用履歴 [Sample Page]</string>
     <string name="dialog_title_confirm_amount">Confirm Amount</string>
     <string name="button_send_notification">Send Notification</string>
     <string name="default_contact_name">Other User</string>
@@ -24,6 +24,9 @@
     <string name="button_cross">x</string>
     <string name="payment_confirmation_description">The above listed participants will receive a message once you click this button.</string>
     <string name="split_bill_history_title">Split Bill History</string>
-    <string name="split_history_paid_description">Paid</string>
-    <string name="default_paid_count">0/3</string>
+    <string name="split_history_paid_description">Paid Count :</string>
+    <string name="default_paid_count">0</string>
+    <string name="paid_count_slash">/</string>
+    <string name="default_max_paid_count">3</string>
+    <string name="split_bill_history_button">Split Bill History</string>
 </resources>

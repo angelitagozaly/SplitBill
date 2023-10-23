@@ -2,6 +2,7 @@ package com.example.splitbill
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transition_history)
         setupViews()
+        setSplitHistoryButtonListener()
     }
 
     private fun setupViews() {
@@ -41,6 +43,14 @@ class MainActivity : ComponentActivity() {
         val intent = Intent(this, PaymentTransitionDetailActivity::class.java)
         intent.putExtra(KEY_PAYMENT_TRANSITION_ID, id)
         startActivity(intent)
+    }
+
+    private fun setSplitHistoryButtonListener() {
+        val btSplitBill = findViewById<Button>(R.id.bt_split_history)
+        btSplitBill.setOnClickListener{
+            val intent = Intent(this, SplitBillHistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }

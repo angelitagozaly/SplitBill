@@ -24,7 +24,7 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         val currentItem = userList[position]
 
         holder.binding.tvUserName.text = currentItem.name
-        holder.binding.tvUserAmount.text = currentItem.amount.toString()
+        holder.binding.tvUserAmount.text = currentItem.amount.toAmountFormat()
 
         if (currentItem.isCurrentUser) {
             holder.binding.tvRemoveButton.visibility = View.GONE

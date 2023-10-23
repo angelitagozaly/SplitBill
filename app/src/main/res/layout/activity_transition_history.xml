@@ -22,4 +22,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <Button
+        android:id="@+id/bt_split_history"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/split_bill_history_button"
+        android:layout_marginTop="-80dp"
+        android:layout_gravity="center"
+        android:theme="@style/RTheme.Button.White"
+        android:background="@color/white"
+        android:textSize="20sp" />
+
 </LinearLayout>

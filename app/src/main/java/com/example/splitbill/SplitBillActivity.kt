@@ -119,7 +119,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         var count = 0
         for (user in userList){
             if (user.id != 0) {
-                participantList.add(SplitParticipant(count, user.name, user.amount.toString(), false))
+                participantList.add(SplitParticipant(count, user.name, user.amount.toAmountFormat(), false))
                 count++
             }
         }
@@ -134,7 +134,7 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         for (user in userList) {
             if (user.id != 0) {
                 sb.append(user.name)
-                sb2.append(user.amount.toString())
+                sb2.append(user.amount.toAmountFormat())
                 sb.append('\n')
                 sb2.append('\n')
             }

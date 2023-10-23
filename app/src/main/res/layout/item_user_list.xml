@@ -20,15 +20,15 @@
             android:theme="@style/RTheme.TextView.SubText"/>
         <TextView
             android:id="@+id/tv_remove_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_cross"
-            android:textSize="15sp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_delete"
             android:clickable="true"
             android:focusable="true"
             android:layout_alignParentEnd="true"
             android:gravity="end"
-            android:theme="@style/RTheme.TextView.SubText"
+            android:layout_marginTop="-5dp"
+            android:layout_marginRight="-7dp"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
 
