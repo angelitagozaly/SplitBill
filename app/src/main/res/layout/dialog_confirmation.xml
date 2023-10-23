@@ -10,12 +10,11 @@
         android:gravity="end">
         <TextView
             android:id="@+id/tv_close_confirmation_dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_cross"
-            android:textSize="20sp"
-            android:padding="5dp"
-            android:layout_marginEnd="7dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/ic_cross"
             android:clickable="true"
             android:focusable="true"
             android:theme="@style/RTheme.TextView.Text"/>
@@ -40,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:padding="10dp">
         <TextView
             android:id="@+id/tv_participant_name_list"
@@ -48,6 +48,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1.5"
             android:layout_gravity="start"
+            android:textSize="17sp"
             android:theme="@style/RTheme.TextView.SubText"/>
         <TextView
             android:id="@+id/tv_participant_amount_list"
@@ -57,6 +58,7 @@
             android:layout_weight="0.5"
             android:layout_gravity="end"
             android:gravity="end"
+            android:textSize="17sp"
             android:theme="@style/RTheme.TextView.SubText"/>
     </LinearLayout>
 
@@ -64,7 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="-15dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,6 +81,7 @@
             android:text="@string/button_send_notification"
             android:textSize="15sp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="10dp"
             android:theme="@style/RTheme.Button"/>
     </LinearLayout>
 

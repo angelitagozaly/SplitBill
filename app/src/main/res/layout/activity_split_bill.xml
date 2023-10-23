@@ -147,15 +147,15 @@
 
             <TextView
                 android:id="@+id/tv_plus_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
                 android:layout_alignParentEnd="true"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="end"
-                android:text="@string/button_plus"
-                android:textSize="25sp"
-                android:theme="@style/RTheme.TextView.Text"
+                android:background="@drawable/ic_add"
+                android:layout_marginTop="-7dp"
+                android:layout_marginRight="-7dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </RelativeLayout>

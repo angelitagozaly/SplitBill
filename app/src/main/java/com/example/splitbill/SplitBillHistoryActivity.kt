@@ -20,8 +20,9 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
         setContentView(binding.root)
         setSupportActionBar(binding.tbHistoryListToolbar)
         supportActionBar?.title ="Back"
-
-        addToHistory()
+        if (intent.getStringExtra(PAYDATE) != null) {
+            addToHistory()
+        }
         setupViews()
     }
 
