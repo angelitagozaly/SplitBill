@@ -15,6 +15,7 @@ const val PAYAMT = "paymentAmount"
 const val PAYDESC = "paymentDescription"
 const val PAYDATE = "paymentDate"
 const val SELECTCONT = "SELECTED_CONTACT"
+const val PARTICIPANTS = "participantList"
 
 class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListener {
 
@@ -112,7 +113,20 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         }
     }
 
-    private fun showConfirmationDialog(){
+    private fun getUserList(): ArrayList<SplitParticipant>{
+        val userList = adapter.getUserList()
+        var participantList = ArrayList<SplitParticipant>()
+        var count = 0
+        for (user in userList){
+            if (user.id != 0) {
+                participantList.add(SplitParticipant(count, user.name, user.amount.toString(), false))
+                count++
+            }
+        }
+        return participantList
+    }
+
+    private fun getUserBundle(): Bundle{
         val userList = adapter.getUserList()
         val bundle = Bundle()
         val sb = StringBuilder()
@@ -129,7 +143,11 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         val resultAmount = sb2.toString()
         bundle.putString("names", resultName)
         bundle.putString("amounts", resultAmount)
+        return bundle
+    }
 
+    private fun showConfirmationDialog(){
+        val bundle = getUserBundle()
         dialog.arguments = bundle
         dialog.show(supportFragmentManager, "CONFIRMATION_DIALOG")
     }
@@ -139,8 +157,12 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
         dialog.setMessage("Notification has been sent!")
             .setPositiveButton("Ok") { dialog, id ->
                 dialog.dismiss()
-                val intent = Intent(this, SplitBillHistoryActivity::class.java)
-                startActivity(intent)
+                val intentHistory = Intent(this, SplitBillHistoryActivity::class.java)
+                intentHistory.putExtra(PAYDESC, intent.getStringExtra(PAYDESC))
+                intentHistory.putExtra(PAYAMT, intent.getLongExtra(PAYAMT, 0))
+                intentHistory.putExtra(PAYDATE, intent.getStringExtra(PAYDATE))
+                intentHistory.putExtra(PARTICIPANTS, getUserList())
+                startActivity(intentHistory)
             }
         dialog.create()
         dialog.show()
