@@ -54,7 +54,7 @@ class SplitBillHistoryActivity : AppCompatActivity(), SplitBillHistoryAdapterLis
         val participantNames = splitBillHistory.participantList.map { it.name }.toTypedArray()
         val checkedItems = splitBillHistory.participantList.map { it.paidStatus }.toBooleanArray()
         val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("List of Participants")
+        dialog.setTitle("Participants Paid Status")
         dialog.setMultiChoiceItems(participantNames, checkedItems) { _, position, isChecked ->
             SplitBillHistoryRepository.updatePaidStatus(splitBillHistory.id - 1, position, isChecked)
         }
