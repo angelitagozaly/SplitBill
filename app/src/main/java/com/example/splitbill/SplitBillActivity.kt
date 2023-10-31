@@ -147,9 +147,20 @@ class SplitBillActivity : AppCompatActivity(), UserAdapterListener, DialogListen
     }
 
     private fun showConfirmationDialog(){
-        val bundle = getUserBundle()
-        dialog.arguments = bundle
-        dialog.show(supportFragmentManager, "CONFIRMATION_DIALOG")
+        if (adapter.itemCount > 1) {
+            val bundle = getUserBundle()
+            dialog.arguments = bundle
+            dialog.show(supportFragmentManager, "CONFIRMATION_DIALOG")
+        }
+        else {
+            val dialog = AlertDialog.Builder(this)
+            dialog.setMessage("Please add split participants.")
+                .setPositiveButton("Close"){dialog, id ->
+                    dialog.dismiss()
+                }
+            dialog.create()
+            dialog.show()
+        }
     }
 
     override fun showNotificationConfirmationDialog(){

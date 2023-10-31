@@ -47,8 +47,15 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     fun addParticipant(user: User) {
-        userList.add(user)
-        notifyDataSetChanged()
+        var alreadyExists  = false
+        for (users in userList){
+            if (user.name == users.name)
+                alreadyExists = true
+        }
+        if (!alreadyExists) {
+            userList.add(user)
+            notifyDataSetChanged()
+        }
     }
 
     fun removeParticipant(user: User) {
